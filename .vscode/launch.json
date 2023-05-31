@@ -9,6 +9,20 @@
             "name": "SelectData",
             "request": "launch",
             "mainClass": "samples.db.SelectData",
+            "projectName": "LibraryApp_ca48314e"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "LibraryApp_ca48314e"
+        },
+        {
+            "type": "java",
+            "name": "SelectData",
+            "request": "launch",
+            "mainClass": "samples.db.SelectData",
             "projectName": "LibraryApp_3ae05fae"
         },
         {
