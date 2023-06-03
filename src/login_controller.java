@@ -23,7 +23,7 @@ public class login_controller {
 
             Parent root = FXMLLoader.load(getClass().getResource("admin.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 700, 700));
+            stage.setScene(new Scene(root, 1000, 700));
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

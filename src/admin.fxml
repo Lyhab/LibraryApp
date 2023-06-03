@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login_controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_controller">
    <children>
-      <Text layoutX="281.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="qeqweqweqqqqqqqqqqqsdad" />
+      <Line endX="885.0" layoutX="115.0" layoutY="120.0" startX="-115.0" />
+      <Circle fill="DODGERBLUE" layoutX="500.0" layoutY="51.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+      <Text layoutX="467.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="admin">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="20.0" layoutY="44.0" mnemonicParsing="false" onAction="#switchtologin" prefHeight="32.0" prefWidth="85.0" text="Sign off" />
+      <Label layoutX="446.0" layoutY="132.0" text="Library">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="894.0" layoutY="44.0" mnemonicParsing="false" onAction="#switchtoedit" prefHeight="32.0" prefWidth="85.0" text="Edit" />
    </children>
 </AnchorPane>
