@@ -92,7 +92,10 @@ public class Book {
         sid.set(newSID);
     }
 
-    // public StringProperty borrow_dateProperty() { return borrow_date;}
+    public StringProperty borrow_dateProperty() {
+        return borrow_date;
+    }
+
     public String getBorrow_date() {
         return borrow_date.get();
     }
