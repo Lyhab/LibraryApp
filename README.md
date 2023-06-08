@@ -6,7 +6,7 @@ LibaryApp is intended to manage books and process of borrowing/returning books.
 
 First, team leader needs to fork the project and then let your team members to clone your project.
 
-- `backlog`: List all tasks in one plac
+- `backlog`: List all tasks in one place
 - `lib`: the folder to maintain dependencies
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
