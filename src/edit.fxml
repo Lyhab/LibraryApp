@@ -69,7 +69,16 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnRemove" layoutX="277.0" layoutY="472.0" mnemonicParsing="false" onAction="#Remove" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Remove">
+            <Button fx:id="btnRemove" layoutX="31.0" layoutY="421.0" mnemonicParsing="false" onAction="#Remove" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Clear">
+               <effect>
+                  <InnerShadow />
+               </effect>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="bidField" layoutX="163.0" layoutY="25.0" onMouseClicked="#autoGenerrate" prefHeight="25.0" prefWidth="91.0" />
+            <Button fx:id="deleteBtn" layoutX="264.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Delete">
                <effect>
                   <InnerShadow />
                </effect>
@@ -98,5 +107,6 @@
             <TableColumn fx:id="BorrowColumn" prefWidth="105.0" text="Borrow_date" />
         </columns>
       </TableView>
+      <TextField fx:id="searchField" layoutX="136.0" layoutY="57.0" onAction="#handleSearch" prefHeight="32.0" prefWidth="214.0" promptText="Search" />
    </children>
 </AnchorPane>

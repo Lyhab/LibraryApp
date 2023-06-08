@@ -1,3 +1,9 @@
+import java.security.Provider.Service;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -5,46 +11,40 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class edit_controller {
+    DBConnection db = new DBConnection();
+    service sv = new service();
+    ObservableList<Borrow> list = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<Book> table;
+    private TableColumn<Borrow, String> AuthorColumn;
 
     @FXML
-    private TableColumn<Book, String> BIDColumn;
+    private TableColumn<Borrow, Integer> BIDColumn;
 
     @FXML
-    private TableColumn<Book, String> TitleColumn;
+    private TableColumn<Borrow, String> BorrowColumn;
 
     @FXML
-    private TableColumn<Book, String> AuthorColumn;
+    private TableColumn<Borrow, String> GenreColumn;
 
     @FXML
-    private TableColumn<Book, String> LanguageColumn;
+    private TableColumn<Borrow, String> LanguageColumn;
 
     @FXML
-    private TableColumn<Book, String> GenreColumn;
+    private TableColumn<Borrow, String> SIDColumn;
 
     @FXML
-    private TableColumn<Book, String> SIDColumn;
+    private TableColumn<Borrow, String> TitleColumn;
 
     @FXML
-    private TableColumn<Book, String> BorrowColumn;
+    private TextField bidField;
 
     @FXML
     private Button btnInsert;
@@ -54,6 +54,9 @@ public class edit_controller {
 
     @FXML
     private Button btnUpdate;
+
+    @FXML
+    private TableView<Borrow> table;
 
     @FXML
     private TextField txtAuthor;
@@ -74,136 +77,209 @@ public class edit_controller {
     private TextField txtTitle;
 
     @FXML
+    private Button deleteBtn;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
     void Insert(ActionEvent event) {
-        String title, author, language, genre, sid, borrow;
-        title = txtTitle.getText();
-        author = txtAuthor.getText();
-        language = txtLanguage.getText();
-        genre = txtGenre.getText();
-        sid = txtSID.getText();
-        borrow = txtBorrow.getText();
-        try{
-            pst = con.prepareStatement("insert into library(Title, Author, Language, Genre, SID, Borrow_date) values(?,?,?)");
-            pst.setString(1, title);
-            pst.setString(2, author);
-            pst.setString(3, language);
-            pst.setString(4, genre);
-            pst.setString(5, sid);
-            pst.setString(6, borrow );
-            pst.executeUpdate();
+        String title = txtTitle.getText();
+        String author = txtAuthor.getText();
+        String language = txtLanguage.getText();
+        String genre = txtGenre.getText();
+        String sID = txtSID.getText();
+        String borrowDate = txtBorrow.getText();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Insertion");
-
-            alert.setHeaderText("Book Insertion");
-            alert.setContentText("Inserted !");
-
+        if (title == "" || sID == "" || borrowDate == "") {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("invalid insert...");
+            alert.setContentText("");
+            // Show the alert dialog
             alert.showAndWait();
 
-            table();
+        } else if (title != "" && sID != "" && borrowDate != "") {
+            db.insertSql(title, author, language, genre, sID, borrowDate);
+            Remove(event);
+            Search("");
 
-            txtTitle.setText("");
-            txtAuthor.setText("");
-            txtLanguage.setText("");
-            txtGenre.setText("");
-            txtSID.setText("");
-            txtBorrow.setText("");
-        } catch (SQLException ex){
-            Logger.getLogger(edit_controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void table(){
-        Connect();
-        ObservableList<Book> books = FXCollections.observableArrayList();
-        try{
-            pst = con.prepareStatement("select bid, title, author, language, genre, sid, brorow_date from library");
-            ResultSet rs = pst.executeQuery();
-
-            {
-                while (rs.next()) {
-                    Book st = new Book();
-                    st.setBID(rs.getString("bid"));
-                    st.setTitle(rs.getString("title"));
-                    st.setAuthor(rs.getString("author"));
-                    st.setLanguage(rs.getString("language"));
-                    st.setGenre(rs.getString("genre"));
-                    st.setSID(rs.getString("sid"));
-                    st.setBorrow_date(rs.getString("borrow_date"));
-                    books.add(st);
-                }
-            }
-            table.setItems(books);
-            BIDColumn.setCellValueFactory(f -> f.getValue().bidProperty());
-            TitleColumn.setCellValueFactory(f -> f.getValue().titleProperty());
-            AuthorColumn.setCellValueFactory(f -> f.getValue().authorProperty());
-            LanguageColumn.setCellValueFactory(f -> f.getValue().languageProperty());
-            GenreColumn.setCellValueFactory(f -> f.getValue().genreProperty());
-            SIDColumn.setCellValueFactory(f -> f.getValue().sidProperty());
-            BorrowColumn.setCellValueFactory(f -> f.getValue().borrow_dateProperty());
-
-        } catch (SQLException ex){
-            Logger.getLogger(edit_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Insert Success");
+            alert.setContentText("Insert Success....");
+            // Show the alert dialog
+            alert.showAndWait();
         }
 
-        table.setRowFactory( tv -> {
-            TableRow<Book> myRow = new TableRow<>();
-            myRow.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 1 && (!myRow.isEmpty())){
-                    myIndex = table.getSelectionModel().getSelectedIndex();
-                    bid = Integer.parseInt(String.valueOf(table.getItems().get(myIndex).getBID()));
-                    txtTitle.setText(table.getItems().get(myIndex).getTitle());
-                    txtAuthor.setText(table.getItems().get(myIndex).getAuthor());
-                    txtLanguage.setText(table.getItems().get(myIndex).getLanguage());
-                    txtGenre.setText(table.getItems().get(myIndex).getGenre());
-                    txtSID.setText(table.getItems().get(myIndex).getSID());
-                    txtBorrow.setText(table.getItems().get(myIndex).getBorrow_date());
-                }
-            });
-            return myRow;
-        });
     }
-    
 
     @FXML
     void Remove(ActionEvent event) {
+        bidField.setText("");
+        txtAuthor.setText("");
+        txtTitle.setText("");
+        txtGenre.setText("");
+        txtBorrow.setText("");
+        txtLanguage.setText("");
+        txtSID.setText("");
 
     }
 
     @FXML
     void Update(ActionEvent event) {
+        String bid = bidField.getText();
+        String title = txtTitle.getText();
+        String author = txtAuthor.getText();
+        String language = txtLanguage.getText();
+        String genre = txtGenre.getText();
+        String sID = txtSID.getText();
+        String borrowDate = txtBorrow.getText();
 
-    }
+        if (title == "" || sID == "" || borrowDate == "") {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("invalid insert...");
+            alert.setContentText("");
+            // Show the alert dialog
+            alert.showAndWait();
 
-    private Stage stage;
-    private Scene scene;
-    @FXML
-    public void switchtoadmin(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("admin.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+        } else if (title != "" && sID != "" && borrowDate != "") {
+            db.updateSql(bid, title, author, language, genre, sID, borrowDate);
+            Remove(event);
+            Search("");
 
-    Connection con;
-    PreparedStatement pst;
-    int myIndex;
-    int bid;
-    public void Connect(){
-        try{
-            Class.forName("com.mysql.cj.jbdc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://sql12623200:3306/library", "sql12623200", "1C5XGkr8rA");
-        } catch (ClassNotFoundException ex){
- 
-        } catch (SQLException ex){
-            ex.printStackTrace();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Update Success");
+            alert.setContentText("Update Success....");
+            // Show the alert dialog
+            alert.showAndWait();
         }
     }
 
-    public void initialize(URL url, ResourceBundle rb){
-        Connect();
-        table();
+    @FXML
+    void handleDelete(ActionEvent event) {
+
+        int BID = Integer.parseInt(bidField.getText());
+        db.deleteSql(BID);
+        Search("");
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Delete Success");
+        alert.setContentText("Delete Success....");
+        // Show the alert dialog
+        alert.showAndWait();
+    }
+
+    @FXML
+    void handleSearch(ActionEvent event) {
+        String title = searchField.getText();
+        Search(title);
+    }
+
+    @FXML
+    void switchtoadmin(ActionEvent event) {
+
+    }
+
+    public ObservableList<Borrow> getBooksList() throws SQLException {
+        ObservableList<Borrow> borrowList = FXCollections.observableArrayList();
+        try {
+            Connection conn = databaseconnection.getConnection();
+            String sql = "SELECT * FROM borrow";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            Borrow borrows;
+            while (resultSet.next()) {
+                borrows = new Borrow(resultSet.getInt("BID"), resultSet.getString("Title"),
+                        resultSet.getString("Author"), resultSet.getString("Language"), resultSet.getString("Genre"),
+                        resultSet.getString("SID"), resultSet.getString("Borrow_date"));
+                borrowList.add(borrows);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return borrowList;
+
+    }
+
+    public void showBorrows() throws SQLException {
+        ObservableList<Borrow> list = getBooksList();
+        BIDColumn.setCellValueFactory(new PropertyValueFactory<Borrow, Integer>("BID"));
+        TitleColumn.setCellValueFactory(new PropertyValueFactory<Borrow, String>("Title"));
+        AuthorColumn.setCellValueFactory(new PropertyValueFactory<Borrow, String>("Author"));
+        LanguageColumn.setCellValueFactory(new PropertyValueFactory<Borrow, String>("Language"));
+        GenreColumn.setCellValueFactory(new PropertyValueFactory<Borrow, String>("Genre"));
+        SIDColumn.setCellValueFactory(new PropertyValueFactory<Borrow, String>("SID"));
+        BorrowColumn.setCellValueFactory(new PropertyValueFactory<Borrow, String>("Borrow_date"));
+        table.setItems(list);
+    }
+
+    @FXML
+    public void initialize() {
+        try {
+            showBorrows();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        selectedRow();
+    }
+
+    public void Search(String title) {
+        list = db.searchSql(title);
+        table.setItems(list);
+    }
+
+    public void selectedRow() {
+        // Set a listener on the table view to get the values of each column when the
+        // user clicks on a row
+        table.setOnMouseClicked(event -> {
+
+            // Check if the user clicked on a row
+            if (event.getClickCount() == 2) {
+
+                // Get the table view's selection model
+                TableView.TableViewSelectionModel<Borrow> selectionModel = table.getSelectionModel();
+
+                // Get the selected row
+                Borrow selected = selectionModel.getSelectedItem();
+
+                // Get the values of each column
+                int BID = selected.getBID();
+                String title = selected.getTitle();
+                String author = selected.getAuthor();
+                String language = selected.getLanguage();
+                String genre = selected.getGenre();
+                String SID = selected.getSID();
+                String borrowDate = selected.getBorrow_date();
+
+                // Set the value to Fields
+                bidField.setText(Integer.toString(BID));
+                txtTitle.setText(title);
+                txtAuthor.setText(author);
+                txtLanguage.setText(language);
+                txtGenre.setText(genre);
+                txtSID.setText(SID);
+                txtBorrow.setText(borrowDate);
+
+                // Print the values of each column
+                System.out.println("Name: " + title);
+
+            }
+        });
+    }
+
+    @FXML
+    void autoGenerrate(MouseEvent event) throws SQLException {
+        int id = 0;
+        Connection conn = databaseconnection.getConnection();
+        String sql = "SELECT * FROM borrow";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            id = rs.getInt("BID") + 1;
+        }
+        String convert = Integer.toString(id);
+        bidField.setText(convert);
     }
 
 }
