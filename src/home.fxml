@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #ecedef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home_controller">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f9ff" height="100.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1000.0" />
+      <Button layoutX="653.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchtohome" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Home">
+         <font>
+            <Font name="Arial Narrow Bold" size="25.0" />
+         </font>
+      </Button>
+      <Text fontSmoothingType="LCD" layoutX="500.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: justify;" text="Extensive Book Collection: BookBorrow offers a diverse digital library with thousands of books across various genres. From classic literature to contemporary bestsellers, there's something for everyone's reading taste." textAlignment="JUSTIFY" wrappingWidth="420.57818603515625">
+         <font>
+            <Font name="Times New Roman" size="22.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="500.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: justify;" text="Easy Browsing and Search: Finding your next book is effortless with BookBorrow. Browse by genre, author, or topic, or simply use the search feature to quickly locate specific titles or authors." textAlignment="JUSTIFY" wrappingWidth="420.57818603515625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="500.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: justify;" text="Quick Borrowing Process: Borrowing books is a breeze with BookBorrow. Select your desired book, check its availability, and reserve it. Once approved, download the book and start reading instantly." textAlignment="JUSTIFY" wrappingWidth="420.57818603515625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="90.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@asset/logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="752.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchtoadmin" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Admin">
+         <font>
+            <Font name="Arial Narrow Bold" size="25.0" />
+         </font>
+      </Button>
+      <Button layoutX="856.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchtoabout" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="About">
+         <font>
+            <Font name="Arial Narrow Bold" size="25.0" />
+         </font>
+      </Button>
+      <Text fill="#0071bc" fontSmoothingType="LCD" layoutX="40.0" layoutY="65.0" stroke="#e12323" strokeType="OUTSIDE" strokeWidth="0.0" text="E-Library">
+         <font>
+            <Font name="MT Extra" size="50.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

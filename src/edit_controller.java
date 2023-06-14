@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.security.Provider.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -16,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class edit_controller {
     DBConnection db = new DBConnection();
@@ -174,9 +180,17 @@ public class edit_controller {
         Search(title);
     }
 
-    @FXML
-    void switchtoadmin(ActionEvent event) {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
+    @FXML
+    void switchtoadmin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public ObservableList<Borrow> getBooksList() throws SQLException {

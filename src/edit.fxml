@@ -6,33 +6,52 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edit_controller">
    <children>
-      <Pane layoutX="10.0" layoutY="141.0" prefHeight="549.0" prefWidth="400.0" style="-fx-background-color: lightgray;">
+      <Pane layoutX="7.0" layoutY="137.0" prefHeight="557.0" prefWidth="406.0" style="-fx-background-color: lightgray;">
          <children>
-            <TextField fx:id="txtTitle" layoutX="163.0" layoutY="63.0" prefHeight="25.0" prefWidth="225.0" />
-            <Label layoutX="1.0" layoutY="119.0" text="Author">
+            <TextField fx:id="txtTitle" layoutX="163.0" layoutY="63.0" prefHeight="35.0" prefWidth="225.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></TextField>
+            <Label layoutX="-1.0" layoutY="127.0" text="Author">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="txtAuthor" layoutX="163.0" layoutY="129.0" prefHeight="25.0" prefWidth="225.0" />
-            <TextField fx:id="txtLanguage" layoutX="163.0" layoutY="194.0" prefHeight="25.0" prefWidth="225.0" />
-            <TextField fx:id="txtGenre" layoutX="163.0" layoutY="256.0" prefHeight="25.0" prefWidth="225.0" />
-            <TextField fx:id="txtSID" layoutX="163.0" layoutY="318.0" prefHeight="25.0" prefWidth="225.0" />
+            <TextField fx:id="txtAuthor" layoutX="163.0" layoutY="129.0" prefHeight="35.0" prefWidth="225.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtLanguage" layoutX="163.0" layoutY="194.0" prefHeight="35.0" prefWidth="225.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtGenre" layoutX="164.0" layoutY="263.0" prefHeight="35.0" prefWidth="225.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtSID" layoutX="164.0" layoutY="331.0" prefHeight="35.0" prefWidth="225.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></TextField>
             <Label layoutX="10.0" layoutY="377.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="txtBorrow" layoutX="163.0" layoutY="382.0" prefHeight="25.0" prefWidth="225.0" />
+            <TextField fx:id="txtBorrow" layoutX="163.0" layoutY="399.0" prefHeight="35.0" prefWidth="225.0">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font></TextField>
             <Button fx:id="btnInsert" layoutX="18.0" layoutY="472.0" mnemonicParsing="false" onAction="#Insert" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Insert">
                <effect>
                   <InnerShadow />
@@ -57,7 +76,10 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="bidField" layoutX="163.0" layoutY="25.0" onMouseClicked="#autoGenerrate" prefHeight="25.0" prefWidth="91.0" />
+            <TextField fx:id="bidField" layoutX="163.0" layoutY="13.0" onMouseClicked="#autoGenerrate" prefHeight="35.0" prefWidth="50.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
             <Button fx:id="deleteBtn" layoutX="197.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Delete">
                <effect>
                   <InnerShadow />
@@ -66,27 +88,32 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="-1.0" layoutY="58.0" text="Title">
+            <Label layoutX="-1.0" layoutY="62.0" text="Title">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
                </font>
             </Label>
-            <Label layoutY="187.0" text="Language">
+            <Label layoutY="192.0" text="Language">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="-1.0" layoutY="309.0" text="Student ID">
+            <Label layoutX="-2.0" layoutY="330.0" text="Student ID">
                <font>
                   <Font name="Segoe UI Black" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="-2.0" layoutY="378.0" text="Borrow Date">
+            <Label layoutX="-2.0" layoutY="399.0" text="Borrow Date">
                <font>
                   <Font name="Segoe UI Black" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="1.0" layoutY="247.0" text="Genre">
+            <Label layoutX="2.0" layoutY="262.0" text="Genre">
+               <font>
+                  <Font name="Segoe UI Black" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="-1.0" layoutY="6.0" text="Book ID">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
                </font>
@@ -94,13 +121,15 @@
          </children>
       </Pane>
       <Line endX="885.0" layoutX="115.0" layoutY="130.0" startX="-115.0" />
-      <Circle fill="#ff0f0f" layoutX="510.0" layoutY="61.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text layoutX="477.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="admin">
+      <Text layoutX="471.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
          <font>
-            <Font size="24.0" />
+            <Font name="Segoe UI Bold" size="24.0" />
          </font>
       </Text>
-      <Button layoutX="28.0" layoutY="54.0" mnemonicParsing="false" onAction="#switchtoadmin" prefHeight="32.0" prefWidth="85.0" text="Finish" />
+      <Button layoutX="793.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchtoadmin" prefHeight="48.0" prefWidth="152.0" style="-fx-background-color: #b4b8bc; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0.0 , 0 ); -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" text="Finish" textFill="#ef0000">
+         <font>
+            <Font name="Verdana Bold" size="25.0" />
+         </font></Button>
       <TableView fx:id="table" layoutX="424.0" layoutY="141.0" prefHeight="549.0" prefWidth="563.0">
         <columns>
           <TableColumn fx:id="BIDColumn" prefWidth="52.0" text="BID" />
@@ -112,6 +141,14 @@
             <TableColumn fx:id="BorrowColumn" prefWidth="105.0" text="Borrow_date" />
         </columns>
       </TableView>
-      <TextField fx:id="searchField" layoutX="136.0" layoutY="57.0" onAction="#handleSearch" prefHeight="32.0" prefWidth="214.0" promptText="Search" />
+      <TextField fx:id="searchField" layoutX="11.0" layoutY="44.0" onAction="#handleSearch" prefHeight="44.0" prefWidth="284.0" promptText="Search">
+         <font>
+            <Font name="Verdana" size="25.0" />
+         </font></TextField>
+      <ImageView fitHeight="75.0" fitWidth="50.0" layoutX="484.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@asset/profile.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

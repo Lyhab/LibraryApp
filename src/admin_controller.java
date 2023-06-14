@@ -11,20 +11,41 @@ import java.io.IOException;
 public class admin_controller {
     private Stage stage;
     private Scene scene;
+
     @FXML
-    public void switchtoedit(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("edit.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    void switchtoabout(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("about.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchtologin(ActionEvent event) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("login.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    @FXML
+    void switchtoadmin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("admin.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    void switchtoedit(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("edit.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchtohome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
