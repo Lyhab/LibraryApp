@@ -21,7 +21,8 @@
             <TextField fx:id="txtTitle" layoutX="163.0" layoutY="63.0" prefHeight="35.0" prefWidth="225.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <Label layoutX="-1.0" layoutY="127.0" text="Author">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
@@ -30,19 +31,23 @@
             <TextField fx:id="txtAuthor" layoutX="163.0" layoutY="129.0" prefHeight="35.0" prefWidth="225.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <TextField fx:id="txtLanguage" layoutX="163.0" layoutY="194.0" prefHeight="35.0" prefWidth="225.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <TextField fx:id="txtGenre" layoutX="164.0" layoutY="263.0" prefHeight="35.0" prefWidth="225.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <TextField fx:id="txtSID" layoutX="164.0" layoutY="331.0" prefHeight="35.0" prefWidth="225.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <Label layoutX="10.0" layoutY="377.0">
                <font>
                   <Font size="24.0" />
@@ -51,7 +56,8 @@
             <TextField fx:id="txtBorrow" layoutX="163.0" layoutY="399.0" prefHeight="35.0" prefWidth="225.0">
                <font>
                   <Font name="Times New Roman" size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <Button fx:id="btnInsert" layoutX="18.0" layoutY="472.0" mnemonicParsing="false" onAction="#Insert" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Insert">
                <effect>
                   <InnerShadow />
@@ -79,7 +85,8 @@
             <TextField fx:id="bidField" layoutX="163.0" layoutY="13.0" onMouseClicked="#autoGenerrate" prefHeight="35.0" prefWidth="50.0">
                <font>
                   <Font size="18.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <Button fx:id="deleteBtn" layoutX="197.0" layoutY="472.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: white; -fx-border-color: black;" text="Delete">
                <effect>
                   <InnerShadow />
@@ -113,7 +120,7 @@
                   <Font name="Segoe UI Black" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="-1.0" layoutY="6.0" text="Borrow ID">
+            <Label layoutX="-1.0" layoutY="6.0" text="Book ID">
                <font>
                   <Font name="Segoe UI Black" size="30.0" />
                </font>
@@ -129,22 +136,24 @@
       <Button layoutX="793.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchtoadmin" prefHeight="48.0" prefWidth="152.0" style="-fx-background-color: #b4b8bc; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0.0 , 0 ); -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" text="Finish" textFill="#ef0000">
          <font>
             <Font name="Verdana Bold" size="25.0" />
-         </font></Button>
+         </font>
+      </Button>
       <TableView fx:id="table" layoutX="424.0" layoutY="141.0" prefHeight="549.0" prefWidth="563.0">
-        <columns>
-          <TableColumn fx:id="BIDColumn" prefWidth="52.0" text="BID" />
+         <columns>
+            <TableColumn fx:id="BIDColumn" prefWidth="52.0" text="BID" />
             <TableColumn fx:id="TitleColumn" prefWidth="96.0" text="Title" />
-          <TableColumn fx:id="AuthorColumn" prefWidth="103.0" text="Author" />
+            <TableColumn fx:id="AuthorColumn" prefWidth="103.0" text="Author" />
             <TableColumn fx:id="LanguageColumn" prefWidth="79.0" text="Language" />
             <TableColumn fx:id="GenreColumn" prefWidth="74.0" text="Genre" />
             <TableColumn fx:id="SIDColumn" prefWidth="53.0" text="SID" />
             <TableColumn fx:id="BorrowColumn" prefWidth="105.0" text="Borrow_date" />
-        </columns>
+         </columns>
       </TableView>
       <TextField fx:id="searchField" layoutX="11.0" layoutY="44.0" onAction="#handleSearch" prefHeight="44.0" prefWidth="284.0" promptText="Search">
          <font>
             <Font name="Verdana" size="25.0" />
-         </font></TextField>
+         </font>
+      </TextField>
       <ImageView fitHeight="75.0" fitWidth="50.0" layoutX="484.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@asset/profile.png" />

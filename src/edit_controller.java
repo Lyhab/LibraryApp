@@ -89,7 +89,10 @@ public class edit_controller {
     private TextField searchField;
 
     @FXML
+
+    // Insert data into table
     void Insert(ActionEvent event) {
+        // String bookID = bidField.getText();
         String title = txtTitle.getText();
         String author = txtAuthor.getText();
         String language = txtLanguage.getText();
@@ -119,6 +122,7 @@ public class edit_controller {
     }
 
     @FXML
+    // clear data from fielded
     void Remove(ActionEvent event) {
         bidField.setText("");
         txtAuthor.setText("");
@@ -127,10 +131,10 @@ public class edit_controller {
         txtBorrow.setText("");
         txtLanguage.setText("");
         txtSID.setText("");
-
     }
 
     @FXML
+    // update the data in table by Title
     void Update(ActionEvent event) {
         String bid = bidField.getText();
         String title = txtTitle.getText();
@@ -161,12 +165,11 @@ public class edit_controller {
     }
 
     @FXML
+    // delete data from table
     void handleDelete(ActionEvent event) {
-
         int BID = Integer.parseInt(bidField.getText());
         db.deleteSql(BID);
         Search("");
-
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Delete Success");
         alert.setContentText("Delete Success....");
@@ -175,6 +178,7 @@ public class edit_controller {
     }
 
     @FXML
+    // search by title
     void handleSearch(ActionEvent event) {
         String title = searchField.getText();
         Search(title);
