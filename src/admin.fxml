@@ -45,13 +45,13 @@
                </stops>
             </LinearGradient>
          </textFill></Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f9ff" height="100.0" stroke="BLACK" strokeType="INSIDE" width="1000.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f9ff" height="100.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="1000.0" />
       <Button layoutX="653.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchtohome" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Home">
          <font>
             <Font name="Arial Narrow Bold" size="25.0" />
          </font>
       </Button>
-      <Button layoutX="752.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchtoadmin" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Admin">
+      <Button layoutX="752.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchtoadmin" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Admin" textFill="#d16e2a">
          <font>
             <Font name="Arial Narrow Bold" size="25.0" />
          </font>

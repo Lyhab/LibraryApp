@@ -10,8 +10,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #ecedef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home_controller">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f9ff" height="100.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1000.0" />
-      <Button layoutX="653.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchtohome" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Home">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3f9ff" height="100.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="1000.0" />
+      <Button layoutX="653.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchtohome" style="-fx-border-radius: 10px; -fx-border-color: #006dbe; -fx-border-width: 3px; -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 ); -fx-background-color: none; -fx-background-color: #b4b8bc; -fx-background-radius: 10px;" text="Home" textFill="#d16e2a">
          <font>
             <Font name="Arial Narrow Bold" size="25.0" />
          </font>

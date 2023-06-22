@@ -8,13 +8,12 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public class home_controller {
+public class aboutUs_controller {
   private Stage stage;
   private Scene scene;
-  private Parent root;
 
   @FXML
-  void switchtoabout(ActionEvent event) throws IOException {
+  void aboutbtn(ActionEvent event) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("aboutUs.fxml"));
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
@@ -23,8 +22,8 @@ public class home_controller {
   }
 
   @FXML
-  void switchtoadmin(ActionEvent event) throws IOException {
-    Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+  void adminbtn(ActionEvent event) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("admin.fxml"));
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
@@ -32,17 +31,12 @@ public class home_controller {
   }
 
   @FXML
-  void switchtohome(ActionEvent event) throws Exception {
+  void homebtn(ActionEvent event) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
-  }
-
-  @FXML
-  void switchtologin(ActionEvent event) {
-
   }
 
 }

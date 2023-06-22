@@ -89,7 +89,6 @@ public class edit_controller {
     private TextField searchField;
 
     @FXML
-
     // Insert data into table
     void Insert(ActionEvent event) {
         // String bookID = bidField.getText();
@@ -119,18 +118,6 @@ public class edit_controller {
             alert.showAndWait();
         }
 
-    }
-
-    @FXML
-    // clear data from fielded
-    void Remove(ActionEvent event) {
-        bidField.setText("");
-        txtAuthor.setText("");
-        txtTitle.setText("");
-        txtGenre.setText("");
-        txtBorrow.setText("");
-        txtLanguage.setText("");
-        txtSID.setText("");
     }
 
     @FXML
@@ -178,6 +165,18 @@ public class edit_controller {
     }
 
     @FXML
+    // clear data from fielded
+    void Remove(ActionEvent event) {
+        bidField.setText("");
+        txtAuthor.setText("");
+        txtTitle.setText("");
+        txtGenre.setText("");
+        txtBorrow.setText("");
+        txtLanguage.setText("");
+        txtSID.setText("");
+    }
+
+    @FXML
     // search by title
     void handleSearch(ActionEvent event) {
         String title = searchField.getText();
@@ -219,6 +218,7 @@ public class edit_controller {
 
     }
 
+    // Show table
     public void showBorrows() throws SQLException {
         ObservableList<Borrow> list = getBooksList();
         BIDColumn.setCellValueFactory(new PropertyValueFactory<Borrow, Integer>("BID"));
@@ -235,7 +235,6 @@ public class edit_controller {
     public void initialize() {
         try {
             showBorrows();
-
         } catch (Exception e) {
             System.out.println(e);
         }

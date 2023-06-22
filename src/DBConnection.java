@@ -20,16 +20,15 @@ public class DBConnection {
 		}
 	}
 
-	public static void main(String[] args) {
-		System.out.println("hello");
-		DBConnection db = new DBConnection();
-		System.out.println("start Insert...");
-		db.insertSql("GG", "HH", "GG", "HH", "GG", "HH");
-		// System.out.println("start Update...");
-		// db.updateSql("e20202", "Bonsoir", 50);
-		// db.deleteSql("000");
-
-	}
+	// public static void main(String[] args) {
+	// System.out.println("hello");
+	// DBConnection db = new DBConnection();
+	// System.out.println("start Insert...");
+	// db.insertSql("GG", "HH", "GG", "HH", "GG", "HH");
+	// System.out.println("start Update...");
+	// db.updateSql("e20202", "Bonsoir", 50);
+	// db.deleteSql("000");
+	// }
 
 	public void insertSql(String Title, String Author, String Language, String Genre, String SID,
 			String Borrow_date) {
